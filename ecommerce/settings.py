@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,17 +21,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@0%m5m+aal2i_^87$adi_2kjnm4*=htv&%kv3qxi*nueni%c1k'
+# SECRET_KEY = '@0%m5m+aal2i_^87$adi_2kjnm4*=htv&%kv3qxi*nueni%c1k'
+
+SECRET_KEY = os.environ.get('SECRET_KEY', default='@0%m5m+aal2i_^87$adi_2kjnm4*=htv&%kv3qxi*nueni%c1k')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['thalaimurai-shopping.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,8 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_countries',
-    'crispy_forms',
-    
+    'crispy_forms',    
     'core'
 ]
 
@@ -83,12 +87,18 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+    'default': dj_database_url.config (        
+        # Feel free to alter this value to suit your needs.        
+        default='postgresql://postgres:postgres@localhost:5432/thalaimurai',        
+        conn_max_age=600 )
+        }
 
 
 # Password validation
@@ -137,7 +147,7 @@ STATICFILES_DIRS = [BASE_DIR, 'static']
 STATIC_ROOT = BASE_DIR, 'staticfiles' + 'assets'
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR, "media"
+MEDIA_ROOT = BASE_DIR, "media/"
 
 
 # Auth
