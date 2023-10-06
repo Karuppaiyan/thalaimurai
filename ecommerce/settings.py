@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='@0%m5m+aal2i_^87$adi_2kjnm4*=
 # DEBUG = True
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['thalaimurai.in']
+ALLOWED_HOSTS = ['www.thalaimurai.in']
 
 
 # Application definition
