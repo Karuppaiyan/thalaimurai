@@ -93,18 +93,19 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+# DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+# }
 
 
 # DATABASE_URL = os.environ.get('DATABASE_URL')
 # DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
 
-# DATABASES = {
-#     'default': dj_database_url.config (        
-#         # Feel free to alter this value to suit your needs.        
-#         default='postgres://thalaimurai_db_user:OpzjCdT5lc0xNsAffhhfVSivqUC5sQ8T@dpg-ckfuj2ect0pc73dnls10-a.oregon-postgres.render.com/thalaimurai_db',   
-#         conn_max_age=600 )
-#         }
+DATABASES = {
+    'default': dj_database_url.config (        
+        # Feel free to alter this value to suit your needs.        
+        default='postgres://thalaimurai_db_user:OpzjCdT5lc0xNsAffhhfVSivqUC5sQ8T@dpg-ckfuj2ect0pc73dnls10-a.oregon-postgres.render.com/thalaimurai_db',   
+        conn_max_age=600 )
+        }
 
 
 # Password validation
