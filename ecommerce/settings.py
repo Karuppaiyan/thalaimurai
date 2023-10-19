@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='@0%m5m+aal2i_^87$adi_2kjnm4*=
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -86,12 +86,12 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 # DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 # }
 
@@ -99,12 +99,12 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # DATABASE_URL = os.environ.get('DATABASE_URL')
 # DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
 
-DATABASES = {
-    'default': dj_database_url.config (        
-        # Feel free to alter this value to suit your needs.        
-        default='postgres://thalaimurai_db_user:OpzjCdT5lc0xNsAffhhfVSivqUC5sQ8T@dpg-ckfuj2ect0pc73dnls10-a.oregon-postgres.render.com/thalaimurai_db',   
-        conn_max_age=600 )
-        }
+# DATABASES = {
+#     'default': dj_database_url.config (        
+#         # Feel free to alter this value to suit your needs.        
+#         default='postgres://thalaimurai_db_user:OpzjCdT5lc0xNsAffhhfVSivqUC5sQ8T@dpg-ckfuj2ect0pc73dnls10-a.oregon-postgres.render.com/thalaimurai_db',   
+#         conn_max_age=600 )
+#         }
 
 
 # Password validation
